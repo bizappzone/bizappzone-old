@@ -10,11 +10,45 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@bizappzone/xplat/core": [
+        "libs/xplat/core/src/index.ts"
+      ],
+      "@bizappzone/xplat/environments": [
+        "libs/xplat/core/src/lib/environments/base/index.ts"
+      ],
+      "@bizappzone/xplat/features": [
+        "libs/xplat/features/src/index.ts"
+      ],
+      "@bizappzone/xplat/nativescript/core": [
+        "libs/xplat/nativescript/core/src/index.ts"
+      ],
+      "@bizappzone/xplat/nativescript/features": [
+        "libs/xplat/nativescript/features/src/index.ts"
+      ],
+      "@bizappzone/xplat/nativescript/utils": [
+        "libs/xplat/nativescript/utils/src/index.ts"
+      ],
+      "@bizappzone/xplat/utils": [
+        "libs/xplat/utils/src/index.ts"
+      ],
+      "@bizappzone/xplat/web/core": [
+        "libs/xplat/web/core/src/index.ts"
+      ],
+      "@bizappzone/xplat/web/features": [
+        "libs/xplat/web/features/src/index.ts"
+      ]
+    }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
