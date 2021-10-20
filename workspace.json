@@ -1,7 +1,311 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "design-system-ngx-castle": {
+      "projectType": "application",
+      "root": "apps/design-system/ngx-castle",
+      "sourceRoot": "apps/design-system/ngx-castle/src",
+      "prefix": "baz",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/design-system/ngx-castle",
+            "index": "apps/design-system/ngx-castle/src/index.html",
+            "main": "apps/design-system/ngx-castle/src/main.ts",
+            "polyfills": "apps/design-system/ngx-castle/src/polyfills.ts",
+            "tsConfig": "apps/design-system/ngx-castle/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/design-system/ngx-castle/src/favicon.ico",
+              "apps/design-system/ngx-castle/src/assets"
+            ],
+            "styles": ["apps/design-system/ngx-castle/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/design-system/ngx-castle/src/environments/environment.ts",
+                  "with": "apps/design-system/ngx-castle/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "design-system-ngx-castle:build:production"
+            },
+            "development": {
+              "browserTarget": "design-system-ngx-castle:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "design-system-ngx-castle:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/design-system/ngx-castle/src/**/*.ts",
+              "apps/design-system/ngx-castle/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/design-system/ngx-castle"],
+          "options": {
+            "jestConfig": "apps/design-system/ngx-castle/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "design-system-ngx-castle-e2e": {
+      "root": "apps/design-system/ngx-castle-e2e",
+      "sourceRoot": "apps/design-system/ngx-castle-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/design-system/ngx-castle-e2e/cypress.json",
+            "devServerTarget": "design-system-ngx-castle:serve:development",
+            "tsConfig": "apps/design-system/ngx-castle-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "design-system-ngx-castle:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": [
+              "apps/design-system/ngx-castle-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "design-system-ngx-castle-elements": {
+      "projectType": "library",
+      "root": "libs/design-system/ngx-castle-elements",
+      "sourceRoot": "libs/design-system/ngx-castle-elements/src",
+      "prefix": "baz",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:package",
+          "outputs": ["dist/libs/design-system/ngx-castle-elements"],
+          "options": {
+            "project": "libs/design-system/ngx-castle-elements/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/design-system/ngx-castle-elements/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/design-system/ngx-castle-elements/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/design-system/ngx-castle-elements"],
+          "options": {
+            "jestConfig": "libs/design-system/ngx-castle-elements/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/design-system/ngx-castle-elements/src/**/*.ts",
+              "libs/design-system/ngx-castle-elements/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "design-system-ngx-castle-forms": {
+      "projectType": "library",
+      "root": "libs/design-system/ngx-castle-forms",
+      "sourceRoot": "libs/design-system/ngx-castle-forms/src",
+      "prefix": "baz",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:package",
+          "outputs": ["dist/libs/design-system/ngx-castle-forms"],
+          "options": {
+            "project": "libs/design-system/ngx-castle-forms/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/design-system/ngx-castle-forms/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/design-system/ngx-castle-forms/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/design-system/ngx-castle-forms"],
+          "options": {
+            "jestConfig": "libs/design-system/ngx-castle-forms/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/design-system/ngx-castle-forms/src/**/*.ts",
+              "libs/design-system/ngx-castle-forms/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "design-system-ngx-castle-tables": {
+      "projectType": "library",
+      "root": "libs/design-system/ngx-castle-tables",
+      "sourceRoot": "libs/design-system/ngx-castle-tables/src",
+      "prefix": "baz",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:package",
+          "outputs": ["dist/libs/design-system/ngx-castle-tables"],
+          "options": {
+            "project": "libs/design-system/ngx-castle-tables/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/design-system/ngx-castle-tables/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/design-system/ngx-castle-tables/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/design-system/ngx-castle-tables"],
+          "options": {
+            "jestConfig": "libs/design-system/ngx-castle-tables/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/design-system/ngx-castle-tables/src/**/*.ts",
+              "libs/design-system/ngx-castle-tables/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "design-system-ngx-castle-ui": {
+      "projectType": "library",
+      "root": "libs/design-system/ngx-castle-ui",
+      "sourceRoot": "libs/design-system/ngx-castle-ui/src",
+      "prefix": "baz",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:package",
+          "outputs": ["dist/libs/design-system/ngx-castle-ui"],
+          "options": {
+            "project": "libs/design-system/ngx-castle-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/design-system/ngx-castle-ui/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/design-system/ngx-castle-ui/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/design-system/ngx-castle-ui"],
+          "options": {
+            "jestConfig": "libs/design-system/ngx-castle-ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/design-system/ngx-castle-ui/src/**/*.ts",
+              "libs/design-system/ngx-castle-ui/src/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "design-system-ngx-castle"
 }

@@ -14,12 +14,7 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
@@ -31,5 +26,25 @@
       }
     ]
   },
-  "projects": {}
+  "projects": {
+    "design-system-ngx-castle": {
+      "tags": ["design-system", "FE", "Castle"]
+    },
+    "design-system-ngx-castle-e2e": {
+      "tags": [],
+      "implicitDependencies": ["design-system-ngx-castle"]
+    },
+    "design-system-ngx-castle-elements": {
+      "tags": ["NGX castle-elements FE"]
+    },
+    "design-system-ngx-castle-forms": {
+      "tags": ["NGX castle-forms FE"]
+    },
+    "design-system-ngx-castle-tables": {
+      "tags": ["NGX castle-tables FE"]
+    },
+    "design-system-ngx-castle-ui": {
+      "tags": ["NGX castle-ui FE"]
+    }
+  }
 }
