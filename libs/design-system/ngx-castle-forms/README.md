@@ -1,7 +1,5 @@
-# design-system-ngx-castle-forms
+# design-system ngx-castle-forms
 
-This library was generated with [Nx](https://nx.dev).
+## Forms module
 
-## Running unit tests
-
-Run `nx test design-system-ngx-castle-forms` to execute the unit tests.
+` <baz-text-input></baz-text-input> <baz-text-area></baz-text-area>`
